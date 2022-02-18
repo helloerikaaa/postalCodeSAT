@@ -26,11 +26,18 @@ with st.form("my_form"):
     df_codigos = df_codigos[(df_codigos['localidad'] == localidad) & (
         df_codigos['municipio'] == municipio)]
 
-    codigos = np.asarray(df_codigos['codigo_postal'])
-    index = (np.abs(codigos - codigo)).argmin()
-    closest_value = codigos[index]
+    if not df_codigos.empty:
+        codigos = np.asarray(df_codigos['codigo_postal'])
+        index = (np.abs(codigos - codigo)).argmin()
+        closest_value = codigos[index]
+    else:
+        closest_value = 0
 
     submitted = st.form_submit_button("Submit")
     if submitted:
-        st.metric('El código postal válido más cercano es',
-                  closest_value, delta=None, delta_color="normal")
+        if closest_value != 0:
+            st.metric('El código postal válido más cercano es',
+                      closest_value, delta=None, delta_color="normal")
+        else:
+            st.metric('Datos incorrectos, por favor verifica',
+                      closest_value, delta=None, delta_color="normal")
