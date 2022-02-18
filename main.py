@@ -33,7 +33,7 @@ with st.form("my_form"):
     else:
         closest_value = 0
 
-    submitted = st.form_submit_button("Submit")
+    submitted = st.form_submit_button("Encontrar")
     if submitted:
         if closest_value != 0:
             st.metric('El código postal válido más cercano es',
