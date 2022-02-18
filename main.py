@@ -18,9 +18,9 @@ with st.form("my_form"):
     st.write("Por favor llena los campos")
     codigo = st.number_input('Código Postal', min_value=None, max_value=None, value=0, step=None,
                              format=None, key=None, help=None, on_change=None, args=None, kwargs=None, disabled=False)
-    localidad = st.number_input('Localidad', min_value=None, max_value=None, value=0, step=None,
-                                format=None, key=None, help=None, on_change=None, args=None, kwargs=None, disabled=False)
     municipio = st.number_input('Municipio', min_value=None, max_value=None, value=0, step=None,
+                                format=None, key=None, help=None, on_change=None, args=None, kwargs=None, disabled=False)
+    localidad = st.number_input('Localidad', min_value=None, max_value=None, value=0, step=None,
                                 format=None, key=None, help=None, on_change=None, args=None, kwargs=None, disabled=False)
 
     df_codigos = df_codigos[(df_codigos['localidad'] == localidad) & (
